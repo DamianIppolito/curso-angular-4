@@ -36,13 +36,17 @@
       </div>
       <div class="form-group">
         <label>Correo Electrónico</label>
-        <input type="text" class="form-control" id="email" name="email" ngModel required email/>
+        <i class="fa fa-check-circle check" *ngIf="email.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="email.invalid && email.touched"></i>
+        <input type="text" class="form-control" id="email" name="email" ngModel required email #email="ngModel"/>
+        <p class="alert alert-danger" *ngIf="email.invalid && email.touched">Por favor introduzca un email con formato valido</p>
       </div>
       <div class="form-group">
         <label>Persona de contacto</label>
         <input type="text" class="form-control" id="contacto" name="contacto" ngModel/>
       </div>
-      <button type="submit"class="btn btn-success">Añadir Proveedor</button>
+      <button type="submit"class="btn btn-success" [disabled]="!formProv.valid">Añadir Proveedor</button>
+      <p class="alert alert-danger" *ngIf="!formProv.valid">Debe rellenar todos los campos obligatorios de forma correcta</p>
     </form>
     <hr/>
     <h4>Estado dirty: {{formProv.controls.email.dirty}}</h4>
