@@ -7,10 +7,12 @@ import {ProveedoresService} from './servicios/proveedores.service';
 import { ProveedoresComponent } from './componentes/proveedores/proveedores/proveedores.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { HeaderComponent } from './componentes/header/header.component';
+import { AddproveedorComponent } from './componentes/proveedores/addproveedor/addproveedor.component';
 
 const routes : Routes = [
   { path: '', component: InicioComponent },
   { path: 'proveedores', component: ProveedoresComponent },
+  { path: 'anadir-proveedor', component: AddproveedorComponent },
   { path: '**', component: InicioComponent },
 ];
 
@@ -19,7 +21,8 @@ const routes : Routes = [
     AppComponent,
     ProveedoresComponent,
     InicioComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddproveedorComponent
   ],
   imports: [
     BrowserModule,
