@@ -36,7 +36,7 @@
       </div>
       <div class="form-group">
         <label>Correo Electrónico</label>
-        <input type="text" class="form-control" id="email" name="email" ngModel/>
+        <input type="text" class="form-control" id="email" name="email" ngModel required email/>
       </div>
       <div class="form-group">
         <label>Persona de contacto</label>
@@ -45,9 +45,12 @@
       <button type="submit"class="btn btn-success">Añadir Proveedor</button>
     </form>
     <hr/>
-    <pre>
-      {{proveedor | json}}
-    </pre>
+    <h4>Estado dirty: {{formProv.controls.email.dirty}}</h4>
+    <h4>Estado pristine: {{formProv.controls.email.pristine}}</h4>
+    <h4>Estado touched: {{formProv.controls.email.touched}}</h4>
+    <h4>Estado valid: {{formProv.controls.email.valid}}</h4>
+    <h4>Estado invalid: {{formProv.controls.email.invalid}}</h4>
+
   </div>
   <div class="col col-md"></div>
 </div>
