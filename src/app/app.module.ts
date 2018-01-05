@@ -6,18 +6,20 @@ import { AppComponent } from './app.component';
 import {ProveedoresService} from './servicios/proveedores.service';
 import { ProveedoresComponent } from './componentes/proveedores/proveedores/proveedores.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { HeaderComponent } from './componentes/header/header.component';
 
 const routes : Routes = [
-  { path: '**', component: InicioComponent },
   { path: '', component: InicioComponent },
   { path: 'proveedores', component: ProveedoresComponent },
+  { path: '**', component: InicioComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     ProveedoresComponent,
-    InicioComponent
+    InicioComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
