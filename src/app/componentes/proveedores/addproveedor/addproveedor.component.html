@@ -2,7 +2,7 @@
   <div class="col col-md"></div>
   <div class="col-10 col-md-8">
     <h2>Añadir nuevo proveedor</h2>
-    <form>
+    <form (ngSubmit)="onSubmit()" #formProv="ngForm">
       <div class="form-group">
         <label>Nombre</label>
         <input type="text" class="form-control" id="nombre" name="nombre" ngModel/>
@@ -41,6 +41,10 @@
       </div>
       <button type="submit"class="btn btn-success">Añadir Proveedor</button>
     </form>
+    <hr/>
+    <pre>
+      {{proveedor | json}}
+    </pre>
   </div>
   <div class="col col-md"></div>
 </div>
