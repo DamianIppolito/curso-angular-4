@@ -1,19 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import {ProveedoresService} from './servicios/proveedores.service';
 import { ProveedoresComponent } from './componentes/proveedores/proveedores/proveedores.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
 
+const routes : Routes = [
+  { path: '**', component: InicioComponent },
+  { path: '', component: InicioComponent },
+  { path: 'proveedores', component: ProveedoresComponent },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProveedoresComponent
+    ProveedoresComponent,
+    InicioComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [ProveedoresService],
   bootstrap: [AppComponent]
