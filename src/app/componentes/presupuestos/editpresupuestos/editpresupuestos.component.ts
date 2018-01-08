@@ -21,14 +21,14 @@ export class EditpresupuestosComponent implements OnInit {
 
   constructor(
     private pf:FormBuilder,
-    private presupuestoService : PresupuestosService,
+    private presupuestosService : PresupuestosService,
     private router : Router,
     private activatedRoute : ActivatedRoute
   ) {
     this.activatedRoute.params.subscribe(
       parametros => {
         this.id = parametros['id'];
-        this.presupuestoService.getPresupuesto(this.id).subscribe(presupuesto => {this.presupuesto = presupuesto;});
+        this.presupuestosService.getPresupuesto(this.id).subscribe(presupuesto => {this.presupuesto = presupuesto;});
       }
     );
   }
@@ -50,7 +50,7 @@ export class EditpresupuestosComponent implements OnInit {
 
   onSubmit(){
     this.presupuesto = this.savePresupuesto();
-    this.presupuestoService.putPresupuesto(this.presupuesto, this.id).subscribe(
+    this.presupuestosService.putPresupuesto(this.presupuesto, this.id).subscribe(
       newpres=> {
         this.router.navigate(['/presupuestos']);
       }

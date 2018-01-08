@@ -10,6 +10,7 @@
       <th>IVA</th>
       <th>Total</th>
       <th>Editar</th>
+      <th>Eliminar</th>
     </tr>
   </thead>
   <tbody>
@@ -20,7 +21,16 @@
       <td>{{presupuesto.cantidad}}</td>
       <td>{{presupuesto.iva}}</td>
       <td>{{presupuesto.total}}</td>
-      <td><button type="button" class="btn btn-success" routerLink="/edit-presupuesto/{{presupuesto.id$}}" name="button">Editar</button></td>
+      <td>
+        <button type="button" class="btn btn-success" routerLink="/edit-presupuesto/{{presupuesto.id$}}" name="button">
+          Editar
+        </button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger" (click)="eliminarPresupuesto(presupuesto.id$)" name="button">
+          Eliminar
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

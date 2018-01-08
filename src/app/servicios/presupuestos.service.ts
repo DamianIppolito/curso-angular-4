@@ -34,4 +34,9 @@ export class PresupuestosService {
     return this.http.put(url, new_pre, {headers:headers}).map(res=>{return res.json()});
   }
 
+  deletePresupuesto(id$ : string){
+    const url = `${this.preURL}/${id$}.json`;
+    return this.http.delete(url).map(res=>res.json());
+  }
+
 }
