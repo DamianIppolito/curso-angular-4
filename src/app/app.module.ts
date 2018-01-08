@@ -13,6 +13,7 @@ import { HeaderComponent } from './componentes/header/header.component';
 import { AddproveedorComponent } from './componentes/proveedores/addproveedor/addproveedor.component';
 import { AddpresupuestoComponent } from './componentes/presupuestos/addpresupuesto/addpresupuesto.component';
 import { PresupuestosComponent } from './componentes/presupuestos/presupuestos/presupuestos.component';
+import { EditpresupuestosComponent } from './componentes/presupuestos/editpresupuestos/editpresupuestos.component';
 
 const routes : Routes = [
   { path: '', component: InicioComponent },
@@ -20,6 +21,7 @@ const routes : Routes = [
   { path: 'anadir-proveedor', component: AddproveedorComponent },
   { path: 'anadir-presupuesto', component: AddpresupuestoComponent },
   { path: 'presupuestos', component: PresupuestosComponent },
+  { path: 'edit-presupuesto', component: EditpresupuestosComponent },
   { path: '**', component: InicioComponent },
 ];
 
@@ -31,7 +33,8 @@ const routes : Routes = [
     HeaderComponent,
     AddproveedorComponent,
     AddpresupuestoComponent,
-    PresupuestosComponent
+    PresupuestosComponent,
+    EditpresupuestosComponent
   ],
   imports: [
     BrowserModule,

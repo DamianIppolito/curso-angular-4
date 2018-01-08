@@ -7,6 +7,7 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class PresupuestosService {
   presURL = 'https://appcompras-9ee1e.firebaseio.com/presupuestos.json'
+  preURL = 'https://appcompras-9ee1e.firebaseio.com/presupuestos'
 
   constructor(private http : Http) { }
 
@@ -19,6 +20,18 @@ export class PresupuestosService {
 
   getPresupuestos(){
     return this.http.get(this.presURL).map(res=>res.json());
+  }
+
+  getPresupuesto(id$ : string){
+    const url = `${this.preURL}/${id$}.json`;
+    return this.http.get(url).map(res=>res.json());
+  }
+
+  putPresupuesto(presupuesto : any, id$ : string){
+    const new_pre = JSON.stringify(presupuesto);
+    const headers = new Headers({'ContentType' : 'application/json' });
+    const url = `${this.preURL}/${id$}.json`;
+    return this.http.put(url, new_pre, {headers:headers}).map(res=>{return res.json()});
   }
 
 }
