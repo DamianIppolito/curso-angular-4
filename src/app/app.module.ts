@@ -2,9 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {ProveedoresService} from './servicios/proveedores.service';
+import {PresupuestosService} from './servicios/presupuestos.service';
 import { ProveedoresComponent } from './componentes/proveedores/proveedores/proveedores.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { HeaderComponent } from './componentes/header/header.component';
@@ -32,9 +34,10 @@ const routes : Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [ProveedoresService],
+  providers: [ProveedoresService, PresupuestosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
