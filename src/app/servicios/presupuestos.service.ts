@@ -14,7 +14,11 @@ export class PresupuestosService {
     const newpres = JSON.stringify(presupuesto);
     const headers = new Headers({'ContentType' : 'application/json' });
 
-    return this.http.post(this.presURL, newpres, {headers:headers}).map( res=>{return res.json});
+    return this.http.post(this.presURL, newpres, {headers:headers}).map(res=>{return res.json()});
+  }
+
+  getPresupuestos(){
+    return this.http.get(this.presURL).map(res=>res.json());
   }
 
 }

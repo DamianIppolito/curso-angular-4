@@ -42,8 +42,9 @@ export class AddpresupuestoComponent implements OnInit {
     this.presupuestoService.postPresupuesto(this.presupuesto).subscribe(
       newpres=> {
 
-      }      
+      }
     );
+    this.presupuestoForm.reset();
   }
 
   savePresupuesto(){
