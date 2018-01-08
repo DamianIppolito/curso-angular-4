@@ -21,7 +21,7 @@ const routes : Routes = [
   { path: 'anadir-proveedor', component: AddproveedorComponent },
   { path: 'anadir-presupuesto', component: AddpresupuestoComponent },
   { path: 'presupuestos', component: PresupuestosComponent },
-  { path: 'edit-presupuesto', component: EditpresupuestosComponent },
+  { path: 'edit-presupuesto/:id', component: EditpresupuestosComponent },
   { path: '**', component: InicioComponent },
 ];
 

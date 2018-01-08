@@ -9,6 +9,7 @@
       <th>Inporte sin IVA</th>
       <th>IVA</th>
       <th>Total</th>
+      <th>Editar</th>
     </tr>
   </thead>
   <tbody>
@@ -19,6 +20,7 @@
       <td>{{presupuesto.cantidad}}</td>
       <td>{{presupuesto.iva}}</td>
       <td>{{presupuesto.total}}</td>
+      <td><button type="button" class="btn btn-success" routerLink="/edit-presupuesto/{{presupuesto.id$}}" name="button">Editar</button></td>
     </tr>
   </tbody>
 </table>
