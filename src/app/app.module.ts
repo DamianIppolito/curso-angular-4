@@ -14,6 +14,7 @@ import { AddproveedorComponent } from './componentes/proveedores/addproveedor/ad
 import { AddpresupuestoComponent } from './componentes/presupuestos/addpresupuesto/addpresupuesto.component';
 import { PresupuestosComponent } from './componentes/presupuestos/presupuestos/presupuestos.component';
 import { EditpresupuestosComponent } from './componentes/presupuestos/editpresupuestos/editpresupuestos.component';
+import { RegistroComponent } from './componentes/autenticacion/registro/registro.component';
 
 const routes : Routes = [
   { path: '', component: InicioComponent },
@@ -22,6 +23,7 @@ const routes : Routes = [
   { path: 'anadir-presupuesto', component: AddpresupuestoComponent },
   { path: 'presupuestos', component: PresupuestosComponent },
   { path: 'edit-presupuesto/:id', component: EditpresupuestosComponent },
+  { path: 'registro', component: RegistroComponent },
   { path: '**', component: InicioComponent },
 ];
 
@@ -34,7 +36,8 @@ const routes : Routes = [
     AddproveedorComponent,
     AddpresupuestoComponent,
     PresupuestosComponent,
-    EditpresupuestosComponent
+    EditpresupuestosComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
