@@ -10,6 +10,11 @@ export class AddpresupuestoComponent implements OnInit {
 
   presupuestoForm : FormGroup;
   presupuesto : any;
+  base : any;
+  tipo : any;
+  iva : any = 0;
+  total : any = 0;
+
 
   constructor(private pf:FormBuilder) { }
 
@@ -20,10 +25,12 @@ export class AddpresupuestoComponent implements OnInit {
       concepto : ['', [Validators.required, Validators.minLength(10)]],
       base : ['', Validators.required],
       tipo : ['', Validators.required],
-      iva : ['', Validators.required],
-      total : ['', Validators.required]
+      iva : this.iva,
+      total : this.total
 
     });
+
+    this.onChanges();
   }
 
   onSubmit(){
@@ -41,5 +48,16 @@ export class AddpresupuestoComponent implements OnInit {
       total :   this.presupuestoForm.get('total').value
     }
     return savePresupuesto;
+  }
+
+  onChanges() : void{
+    this.presupuestoForm.valueChanges.subscribe(
+      valor => {
+        this.base = valor.base;
+        this.tipo = valor.tipo;
+        this.presupuestoForm.value.iva = (this.base * this.tipo);
+        this.presupuestoForm.value.total = parseInt(this.base) + parseInt(this.presupuestoForm.value.iva);
+      }
+    );
   }
 }
