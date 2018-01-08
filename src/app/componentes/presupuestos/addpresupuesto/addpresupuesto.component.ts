@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-addpresupuesto',
@@ -15,13 +15,13 @@ export class AddpresupuestoComponent implements OnInit {
 
   ngOnInit() {
     this.presupuestoForm = this.pf.group({
-      proveedor : '',
-      fecha : '',
-      concepto : '',
-      base : '',
-      tipo : '',
-      iva : '',
-      total : ''
+      proveedor : ['', Validators.required],
+      fecha : ['', Validators.required],
+      concepto : ['', [Validators.required, Validators.minLength(10)]],
+      base : ['', Validators.required],
+      tipo : ['', Validators.required],
+      iva : ['', Validators.required],
+      total : ['', Validators.required]
 
     });
   }
