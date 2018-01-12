@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import {ProveedoresService} from './servicios/proveedores.service';
 import {PresupuestosService} from './servicios/presupuestos.service';
+import {AutenticacionService} from './servicios/autenticacion.service';
 import { ProveedoresComponent } from './componentes/proveedores/proveedores/proveedores.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { HeaderComponent } from './componentes/header/header.component';
@@ -46,7 +47,11 @@ const routes : Routes = [
     ReactiveFormsModule,
     HttpModule
   ],
-  providers: [ProveedoresService, PresupuestosService],
+  providers: [
+    ProveedoresService,
+    PresupuestosService,
+    AutenticacionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
