@@ -5,10 +5,16 @@
       <h4>Introduzca sus datos de registro</h4>
       <label for="">Correo Electrónico</label>
       <input type="email" class="form-control" id="inputEmail" formControlName="email" autofocus/>
+      <p class="alert alert-danger" *ngIf="erroresForm.email">
+        {{erroresForm.email}}
+      </p>
       <label for="">Contraseña</label>
       <input type="password" class="form-control" id="inputPassword" formControlName="password"/>
+      <p class="alert alert-danger" *ngIf="erroresForm.password">
+        {{erroresForm.password}}
+      </p>
       <hr/>
-      <button type="submit" class="btn btn-primary" name="button">Registrar</button>
+      <button type="submit" class="btn btn-primary" name="button" [disabled]="!registroForm.valid">Registrar</button>
     </form>
   </div>
   <div class=" col col-md"></div>
