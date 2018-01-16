@@ -1,13 +1,30 @@
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Injectable()
 export class AutenticacionService {
 
-  constructor() { }
+  constructor(
+    private router : Router,
+    private activatedRoute : ActivatedRoute
+  ) { }
 
   registroUsusario(userdata){
     firebase.auth().createUserWithEmailAndPassword(userdata.email, userdata.password).catch(
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  inicioSesion(userdata){
+    firebase.auth().signInWithEmailAndPassword(userdata.email, userdata.password).then(
+      response => {
+        console.log(response);
+        this.router.navigate(['/inicio']);
+      }
+    ).catch(
       error => {
         console.log(error);
       }
