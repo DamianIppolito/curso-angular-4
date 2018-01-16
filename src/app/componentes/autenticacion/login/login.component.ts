@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginForm : FormGroup;
   userdata : any;
+  mensaje = false;
 
 
   constructor(
@@ -31,6 +32,11 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     this.userdata = this.saveUserData();
     this.autenticacionService.inicioSesion(this.userdata);
+    setTimeout(() => {
+      if(!this.isAuth()){
+        this.mensaje = true;
+      }
+    },2000);
   }
 
   saveUserData(){
@@ -39,6 +45,10 @@ export class LoginComponent implements OnInit {
       password : this.loginForm.get('password').value
     }
     return saveUserData;
+  }
+
+  isAuth(){
+    return this.autenticacionService.isAuthenticated();
   }
 
 }

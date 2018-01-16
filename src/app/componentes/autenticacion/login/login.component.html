@@ -10,6 +10,7 @@
       <hr/>
       <button type="submit" class="btn btn-primary" name="button" [disabled]="!loginForm.valid">Inicie Sesión</button>
     </form>
+    <p class="alert alert-danger" *ngIf="mensaje">El usuario/contraseña no es correcto</p>
   </div>
   <div class=" col col-md"></div>
 </div>
