@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import {ProveedoresService} from './servicios/proveedores.service';
 import {PresupuestosService} from './servicios/presupuestos.service';
 import {AutenticacionService} from './servicios/autenticacion.service';
+import {GuardService} from './servicios/guard.service';
 import { ProveedoresComponent } from './componentes/proveedores/proveedores/proveedores.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { HeaderComponent } from './componentes/header/header.component';
@@ -20,11 +21,11 @@ import { LoginComponent } from './componentes/autenticacion/login/login.componen
 
 const routes : Routes = [
   { path: '', component: InicioComponent },
-  { path: 'proveedores', component: ProveedoresComponent },
-  { path: 'anadir-proveedor', component: AddproveedorComponent },
-  { path: 'anadir-presupuesto', component: AddpresupuestoComponent },
-  { path: 'presupuestos', component: PresupuestosComponent },
-  { path: 'edit-presupuesto/:id', component: EditpresupuestosComponent },
+  { path: 'proveedores', component: ProveedoresComponent, canActivate:[GuardService] },
+  { path: 'anadir-proveedor', component: AddproveedorComponent, canActivate:[GuardService] },
+  { path: 'anadir-presupuesto', component: AddpresupuestoComponent, canActivate:[GuardService] },
+  { path: 'presupuestos', component: PresupuestosComponent, canActivate:[GuardService] },
+  { path: 'edit-presupuesto/:id', component: EditpresupuestosComponent, canActivate:[GuardService] },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', component: InicioComponent },
@@ -53,7 +54,8 @@ const routes : Routes = [
   providers: [
     ProveedoresService,
     PresupuestosService,
-    AutenticacionService
+    AutenticacionService,
+    GuardService
   ],
   bootstrap: [AppComponent]
 })
