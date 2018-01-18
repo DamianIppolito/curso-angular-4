@@ -1,36 +1,41 @@
 <h3>Listado de facturas</h3>
 <a routerLink="/anadir-factura" class="btn btn-primary float-md-right">Añadir nueva factura</a>
-<table class="table table-bordered table-striped" style="margin-top:40px;">
-  <thead>
-    <tr filters>
-      <th>Proveedor</th>
-      <th>Fecha</th>
-      <th>Concepto</th>
-      <th>Inporte sin IVA</th>
-      <th>IVA</th>
-      <th>Total</th>
-      <th>Editar</th>
-      <th>Eliminar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let factura of facturas">
-      <td>{{factura.proveedor}}</td>
-      <td>{{factura.fecha}}</td>
-      <td>{{factura.concepto}}</td>
-      <td>{{factura.cantidad}}</td>
-      <td>{{factura.iva}}</td>
-      <td>{{factura.total}}</td>
-      <td>
-        <button type="button" class="btn btn-success" routerLink="/edit-factura/{{factura.id$}}" name="button">
-          Editar
-        </button>
-      </td>
-      <td>
-        <button type="button" class="btn btn-danger" (click)="eliminarFactura(factura.id$)" name="button">
-          Eliminar
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="cargando" class="text-center" style="padding-top:60px;">
+  <img src="../../../../assets/spinner.gif" alt="cargando...">
+</div>
+<div *ngIf="!cargando">
+  <table class="table table-bordered table-striped" style="margin-top:40px;">
+    <thead>
+      <tr filters>
+        <th>Proveedor</th>
+        <th>Fecha</th>
+        <th>Concepto</th>
+        <th>Inporte sin IVA</th>
+        <th>IVA</th>
+        <th>Total</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let factura of facturas">
+        <td>{{factura.proveedor}}</td>
+        <td>{{factura.fecha}}</td>
+        <td>{{factura.concepto}}</td>
+        <td>{{factura.cantidad}}</td>
+        <td>{{factura.iva}}</td>
+        <td>{{factura.total}}</td>
+        <td>
+          <button type="button" class="btn btn-success" routerLink="/edit-factura/{{factura.id$}}" name="button">
+            Editar
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="eliminarFactura(factura.id$)" name="button">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

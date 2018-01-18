@@ -9,6 +9,7 @@ import {FacturasService} from '../../../servicios/facturas.service';
 export class FacturasComponent implements OnInit {
 
   facturas : any[] = [];
+  cargando = true;
 
   constructor(private facturasService : FacturasService) {
     this.facturasService.getFacturas().subscribe(
@@ -19,6 +20,7 @@ export class FacturasComponent implements OnInit {
           p.id$ = id$;
           this.facturas.push(facturas[id$]);
         }
+        this.cargando = false;
       }
     );
   }

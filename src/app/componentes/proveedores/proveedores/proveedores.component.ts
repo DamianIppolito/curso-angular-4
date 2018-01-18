@@ -9,6 +9,7 @@ import {ProveedoresService} from '../../../servicios/proveedores.service';
 export class ProveedoresComponent implements OnInit {
 
   proveedores :  any[] = [];
+  cargando = true;
 
   constructor(private proveedoresService : ProveedoresService) {
     this.proveedoresService.getProveedores().subscribe(
@@ -19,6 +20,7 @@ export class ProveedoresComponent implements OnInit {
           p.id$ = id$;
           this.proveedores.push(proveedores[id$]);
         }
+        this.cargando = false;
       }
     );
   }
