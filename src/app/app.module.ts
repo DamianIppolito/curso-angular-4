@@ -19,6 +19,11 @@ import { EditpresupuestosComponent } from './componentes/presupuestos/editpresup
 import { RegistroComponent } from './componentes/autenticacion/registro/registro.component';
 import { LoginComponent } from './componentes/autenticacion/login/login.component';
 
+import {FacturasModule} from './facturas/facturas.module';
+import {AddfacturaComponent} from './facturas/componentes/facturas/addfactura/addfactura.component';
+import {FacturasComponent} from './facturas/componentes/facturas/facturas/facturas.component';
+import {EditfacturaComponent} from './facturas/componentes/facturas/editfactura/editfactura.component';
+
 const routes : Routes = [
   { path: '', component: InicioComponent },
   { path: 'proveedores', component: ProveedoresComponent, canActivate:[GuardService] },
@@ -28,6 +33,9 @@ const routes : Routes = [
   { path: 'edit-presupuesto/:id', component: EditpresupuestosComponent, canActivate:[GuardService] },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'facturas', component: FacturasComponent },
+  { path: 'anadir-factura', component: AddfacturaComponent },
+  { path: 'edit-factura/:id', component: EditfacturaComponent },
   { path: '**', component: InicioComponent },
 ];
 
@@ -49,7 +57,8 @@ const routes : Routes = [
     RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    FacturasModule
   ],
   providers: [
     ProveedoresService,
