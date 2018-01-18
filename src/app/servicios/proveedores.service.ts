@@ -1,37 +1,41 @@
 import { Injectable } from '@angular/core';
+import {Headers, Http, Response} from '@angular/http';
+import 'rxjs/Rx';
 
 @Injectable()
 export class ProveedoresService {
 
-  proveedores: any = [
-    {
-      nombre: 'Telefónica',
-      cif: 'B12345678',
-      direccion: 'Paseo de la Castellana, 100',
-      cp: '28.010',
-      localidad: 'Madrid',
-      provincia: 'Madrid',
-      telefono: 911111111,
-      email: 'info@telefonica.com',
-      contacto: 'Juan Pérez'
-    },
-    {
-      nombre: 'Iberdrola',
-      cif: 'B87654321',
-      direccion: 'Príncipe de Vergara, 200',
-      cp: '28.015',
-      localidad: 'Madrid',
-      provincia: 'Madrid',
-      telefono: 922222222,
-      email: 'info@iberdrola.com',
-      contacto: 'Laura Martínez'
-    }
-  ];
+  provURL = 'https://appcompras-9ee1e.firebaseio.com/proveedores.json';
+  proURL = 'https://appcompras-9ee1e.firebaseio.com/proveedores';
 
-  constructor() { }
+  constructor(private http : Http) { }
+
+  postProveedor(proveedor : any){
+    const newpres = JSON.stringify(proveedor);
+    const headers = new Headers({'ContentType' : 'application/json' });
+
+    return this.http.post(this.provURL, newpres, {headers:headers}).map(res=>{return res.json()});
+  }
 
   getProveedores(){
-    return this.proveedores;
+    return this.http.get(this.provURL).map(res=>res.json());
+  }
+
+  getProveedor(id$ : string){
+    const url = `${this.proURL}/${id$}.json`;
+    return this.http.get(url).map(res=>res.json());
+  }
+
+  putProveedor(proveedor : any, id$ : string){
+    const new_pre = JSON.stringify(proveedor);
+    const headers = new Headers({'ContentType' : 'application/json' });
+    const url = `${this.proURL}/${id$}.json`;
+    return this.http.put(url, new_pre, {headers:headers}).map(res=>{return res.json()});
+  }
+
+  deleteProveedor(id$ : string){
+    const url = `${this.proURL}/${id$}.json`;
+    return this.http.delete(url).map(res=>res.json());
   }
 
 }

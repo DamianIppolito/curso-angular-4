@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {ProveedoresService} from '../../../servicios/proveedores.service';
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-addproveedor',
   templateUrl: './addproveedor.component.html',
@@ -7,8 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AddproveedorComponent implements OnInit {
 
-  @ViewChild('formProv') formProv : NgForm
-
+  proveedorForm : FormGroup;
   proveedor : any;
 
   provincias: string[] = [ 'Álava','Albacete','Alicante','Almería','Asturias','Ávila','Badajoz',
@@ -20,35 +22,50 @@ export class AddproveedorComponent implements OnInit {
     'Zamora','Zaragoza'
   ];
 
-  constructor() {
-    this.proveedor = {
-      nombre : '',
-      cif : '',
-      direccion : '',
-      cp : '',
-      localidad : '',
-      provincia : '',
-      telefono : null,
-      email : '',
-      contacto : ''
-    }
-  }
+  constructor(
+    private pf:FormBuilder,
+    private proveedorService : ProveedoresService,
+    private router : Router
+  ) { }
 
   ngOnInit() {
+    this.proveedorForm = this.pf.group({
+      nombre : ['', Validators.required],
+      cif : ['', Validators.required],
+      direccion : ['', [Validators.required]],
+      cp : ['', Validators.required],
+      localidad : ['', Validators.required],
+      provincia : ['', Validators.required],
+      telefono : ['', Validators.required],
+      email : ['', Validators.required],
+      contacto : ['', Validators.required]
+
+    });
   }
 
   onSubmit(){
-    this.proveedor.nombre = this.formProv.value.nombre;
-    this.proveedor.cif = this.formProv.value.cif;
-    this.proveedor.direccion = this.formProv.value.direccion;
-    this.proveedor.cp = this.formProv.value.cp;
-    this.proveedor.localidad = this.formProv.value.localidad;
-    this.proveedor.provincia = this.formProv.value.provincia;
-    this.proveedor.telefono = this.formProv.value.telefono;
-    this.proveedor.email = this.formProv.value.email;
-    this.proveedor.contacto = this.formProv.value.contacto;
+    this.proveedor = this.saveProveedor();
+    this.proveedorService.postProveedor(this.proveedor).subscribe(
+      newpres=> {
+        this.router.navigate(['/proveedores']);
+      }
+    );
+    this.proveedorForm.reset();
+  }
 
-    this.formProv.reset();
+  saveProveedor(){
+    const saveProveedor = {
+      nombre :   this.proveedorForm.get('nombre').value,
+      cif :   this.proveedorForm.get('cif').value,
+      direccion :   this.proveedorForm.get('direccion').value,
+      cp :   this.proveedorForm.get('cp').value,
+      localidad :   this.proveedorForm.get('localidad').value,
+      provincia :   this.proveedorForm.get('provincia').value,
+      telefono :   this.proveedorForm.get('telefono').value,
+      email :   this.proveedorForm.get('email').value,
+      contacto :   this.proveedorForm.get('contacto').value
+    }
+    return saveProveedor;
   }
 
 }
