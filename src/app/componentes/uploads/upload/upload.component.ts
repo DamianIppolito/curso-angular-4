@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoadfileService} from '../../../servicios/loadfile.service';
 import * as _ from 'lodash';
-import {Archivo} from '../file.modal'
+import {Archivo} from '../file.modal';
 
 @Component({
   selector: 'app-upload',

@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {AngularFireModule} from 'angularfire2';
-import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {AngularFireDatabaseModule} from 'angularfire2/database-deprecated';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {enviroment} from './config/firebase.config';
 
@@ -29,6 +29,8 @@ import {AddfacturaComponent} from './facturas/componentes/facturas/addfactura/ad
 import {FacturasComponent} from './facturas/componentes/facturas/facturas/facturas.component';
 import {EditfacturaComponent} from './facturas/componentes/facturas/editfactura/editfactura.component';
 import { UploadComponent } from './componentes/uploads/upload/upload.component';
+import { ContratosComponent } from './componentes/uploads/contratos/contratos.component';
+import { DetallesComponent } from './componentes/uploads/detalles/detalles.component';
 
 const routes : Routes = [
   { path: '', component: InicioComponent },
@@ -43,6 +45,7 @@ const routes : Routes = [
   { path: 'anadir-factura', component: AddfacturaComponent },
   { path: 'edit-factura/:id', component: EditfacturaComponent },
   { path: 'uploads', component: UploadComponent },
+  { path: 'contratos', component: ContratosComponent },
   { path: '**', component: InicioComponent },
 ];
 
@@ -58,7 +61,9 @@ const routes : Routes = [
     EditpresupuestosComponent,
     RegistroComponent,
     LoginComponent,
-    UploadComponent
+    UploadComponent,
+    ContratosComponent,
+    DetallesComponent
   ],
   imports: [
     BrowserModule,
