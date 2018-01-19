@@ -12,10 +12,22 @@ export class UploadComponent implements OnInit {
 
   selectedFiles : FileList;
   currentUpload : Archivo;
+  loading = false;
 
-  constructor() { }
+  constructor(public loadfileService : LoadfileService) { }
 
   ngOnInit() {
+  }
+
+  detectFiles(event){
+    this.selectedFiles = event.target.files;
+  }
+
+  uploadSingle(){
+    const file = this.selectedFiles.item(0);
+    this.currentUpload = new Archivo(file);
+    this.loading = true;
+    this.loadfileService.pushUpload(this.currentUpload);
   }
 
 }

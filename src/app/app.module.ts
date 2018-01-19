@@ -42,6 +42,7 @@ const routes : Routes = [
   { path: 'facturas', component: FacturasComponent },
   { path: 'anadir-factura', component: AddfacturaComponent },
   { path: 'edit-factura/:id', component: EditfacturaComponent },
+  { path: 'uploads', component: UploadComponent },
   { path: '**', component: InicioComponent },
 ];
 
