@@ -1,9 +1,10 @@
 <h3>Listado de proveedores</h3>
 <button routerLink="/anadir-proveedor" class="btn btn-primary float-md-right">Añadir nuevo proveedor</button>
+<input class="form-control" type="search" placeholder="Teclee un proveedor..." [formControl]="campoBusqueda">
 <div *ngIf="cargando" class="text-center" style="padding-top:60px;">
   <img src="../../../../assets/spinner.gif" alt="cargando...">
 </div>
-<div *ngIf="!cargando">
+<div *ngIf="!cargando && resultados">
   <table class="table table-bordered table-striped" style="margin-top:40px;">
     <thead>
       <tr filters>
@@ -20,4 +21,7 @@
       </tr>
     </tbody>
   </table>
+</div>
+<div *ngIf="noresultados && !empty">
+  <p>No existe ninguna coincidencia</p>
 </div>
