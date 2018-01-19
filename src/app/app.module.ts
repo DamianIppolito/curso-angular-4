@@ -13,6 +13,7 @@ import {ProveedoresService} from './servicios/proveedores.service';
 import {PresupuestosService} from './servicios/presupuestos.service';
 import {AutenticacionService} from './servicios/autenticacion.service';
 import {GuardService} from './servicios/guard.service';
+import {LoadfileService} from './servicios/loadfile.service';
 import { ProveedoresComponent } from './componentes/proveedores/proveedores/proveedores.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { HeaderComponent } from './componentes/header/header.component';
@@ -27,6 +28,7 @@ import {FacturasModule} from './facturas/facturas.module';
 import {AddfacturaComponent} from './facturas/componentes/facturas/addfactura/addfactura.component';
 import {FacturasComponent} from './facturas/componentes/facturas/facturas/facturas.component';
 import {EditfacturaComponent} from './facturas/componentes/facturas/editfactura/editfactura.component';
+import { UploadComponent } from './componentes/uploads/upload/upload.component';
 
 const routes : Routes = [
   { path: '', component: InicioComponent },
@@ -54,7 +56,8 @@ const routes : Routes = [
     PresupuestosComponent,
     EditpresupuestosComponent,
     RegistroComponent,
-    LoginComponent
+    LoginComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
@@ -66,14 +69,13 @@ const routes : Routes = [
     AngularFireModule.initializeApp(enviroment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule
-
-
   ],
   providers: [
     ProveedoresService,
     PresupuestosService,
     AutenticacionService,
-    GuardService
+    GuardService,
+    LoadfileService
   ],
   bootstrap: [AppComponent]
 })
